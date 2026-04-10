@@ -26,7 +26,7 @@ function graficarGato(){
 
 }   
 
-function graficarcomida(){   
+function graficarComida(){   
  graficarRectangulo(comidaX,comidaY,ANCHOCOMIDA,ALTUCOMIDA,"#820D7A");
 
 
@@ -39,10 +39,13 @@ function iniciarJuego(){
     gatoX = (canvas.width / 2) - (ANCHOGATO / 2);   
     gatoY = (canvas.height / 2) - (ALTURAGATO / 2); 
 
-    comidaX = (canvas.width / 2) - (ANCHOCOMIDA / 2);   
-    comidaY = (canvas.height / 2) - (ALTUCOMIDA / 2); 
+      //COMIDA ESQUINA INFERIOR DERECHA
+    comidaX = canvas.width - ANCHOCOMIDA;
+    comidaY = canvas.height - ALTUCOMIDA;
+
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
     graficarGato();
-    graficarcomida();
+    graficarComida();
  
 }               
 
