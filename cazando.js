@@ -8,12 +8,19 @@ let gatoX=0;
 let gatoY=0;
 const ANCHOGATO= 50;
 const ALTURAGATO=50; 
+
  
 //Comida
 let comidaX=50;
 let comidaY=50;
 const ANCHOCOMIDA=30;
 const ALTUCOMIDA=30;
+
+//puntaje
+let puntaje=0;  
+//tiempo
+let tiempo=10;
+let intervaloTiempo;
 
 function graficarRectangulo(x,y,ancho,alto,color){
     ctx.fillStyle=color;
@@ -45,6 +52,8 @@ function iniciarJuego(){
     //ctx.clearRect(0, 0, canvas.width, canvas.height);
     graficarGato();
     graficarComida();
+    //contador tiempo   
+    intervaloTiempo = setInterval(restarTiempo,1000);
  
 }               
 
@@ -104,17 +113,32 @@ function moverAbajo(){
     }
 }   
 
-let puntaje=0;  
 
  function aumentarPuntaje(){        
     puntaje=puntaje+1;
-    mostrarEnSpan("puntos", +puntaje)
+    mostrarEnSpan("puntos", +puntaje);  
+    //Ganar
+    if(puntaje >= 6){
+        clearInterval(intervaloTiempo);
+        alert("Ganaste");
+    }
 
  }  
 
  function reaparecerComida(){   
     comidaX=generarAleatorio(0, canvas.width-ANCHOCOMIDA);
     comidaY=generarAleatorio(0,canvas.height-ALTUCOMIDA);
+ }
+
+ function restarTiempo(){
+    tiempo=tiempo-1;
+    mostrarEnSpan("tiempo", +tiempo);   
+    //perder    
+    if(tiempo <= 0){    
+        clearInterval(intervaloTiempo);
+        alert("Gamer Over");
+    }
+
  }
 
 document.getElementById("btnArriba").onclick = () => moverArriba();       
