@@ -59,7 +59,9 @@ const LIMITE_Y = canvas.height - ALTURAGATO;
 
 function detectarColision(){    
     if(gatoX<comidaX+ANCHOCOMIDA && gatoX+ANCHOGATO>comidaX && gatoY<comidaY+ALTUCOMIDA && gatoY+ALTURAGATO>comidaY){   
-        alert("El gato comió la comida");
+        alert("El gato comió la comida");   
+        reaparecerComida();
+        aumentarPuntaje();
 
     }
 } 
@@ -101,6 +103,19 @@ function moverAbajo(){
     detectarColision()
     }
 }   
+
+let puntaje=0;  
+
+ function aumentarPuntaje(){        
+    puntaje=puntaje+1;
+    mostrarEnSpan("puntos", +puntaje)
+
+ }  
+
+ function reaparecerComida(){   
+    comidaX=generarAleatorio(0, canvas.width-ANCHOCOMIDA);
+    comidaY=generarAleatorio(0,canvas.height-ALTUCOMIDA);
+ }
 
 document.getElementById("btnArriba").onclick = () => moverArriba();       
 document.getElementById("btnAbajo").onclick = () => moverAbajo(); 
