@@ -41,7 +41,8 @@ function graficarComida(){
 
 
 //Funcion iniciar juego 
-function iniciarJuego(){   
+function iniciarJuego(){    
+    clearInterval(intervaloTiempo);
     gatoX = (canvas.width / 2) - (ANCHOGATO / 2);   
     gatoY = (canvas.height / 2) - (ALTURAGATO / 2); 
 
@@ -116,7 +117,7 @@ function moverAbajo(){
 
  function aumentarPuntaje(){        
     puntaje=puntaje+1;
-    mostrarEnSpan("puntos", +puntaje);  
+    mostrarEnSpan("puntos", puntaje);  
     //Ganar
     if(puntaje >= 6){
         clearInterval(intervaloTiempo);
@@ -130,16 +131,42 @@ function moverAbajo(){
     comidaY=generarAleatorio(0,canvas.height-ALTUCOMIDA);
  }
 
+ 
  function restarTiempo(){
-    tiempo=tiempo-1;
-    mostrarEnSpan("tiempo", +tiempo);   
-    //perder    
-    if(tiempo <= 0){    
+    if(tiempo <= 0){
         clearInterval(intervaloTiempo);
-        alert("Gamer Over");
+        return; //Detener tiempo
     }
 
- }
+    tiempo--;
+    mostrarEnSpan("tiempo", tiempo);
+
+    if(tiempo === 0){
+        clearInterval(intervaloTiempo);
+        alert("Game Over");
+    }
+}
+
+
+function reiniciarJuego(){  
+    clearInterval(intervaloTiempo);
+    // reiniciar valores
+    puntaje=0;
+    tiempo=10;   
+    //actualizar pantalla
+    mostrarEnSpan("puntos","0");
+    mostrarEnSpan("tiempo","0");
+    //reiniciar posiciones 
+    gatoX=(canvas.width/2)-(ANCHOGATO/2);
+    gatoY=(canvas.height/2)-(ALTURAGATO/2);
+    reaparecerComida();
+    limpiarCanva();
+    graficarGato();
+    graficarComida();
+    //reiniciar tiempo  
+    intervaloTiempo=setInterval(restarTiempo,1000);
+    
+}
 
 document.getElementById("btnArriba").onclick = () => moverArriba();       
 document.getElementById("btnAbajo").onclick = () => moverAbajo(); 
