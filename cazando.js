@@ -55,7 +55,15 @@ function limpiarCanva(){
 }
 
 const LIMITE_X = canvas.width - ANCHOGATO; 
-const LIMITE_Y = canvas.height - ALTURAGATO;
+const LIMITE_Y = canvas.height - ALTURAGATO;    
+
+function detectarColision(){    
+    if(gatoX<comidaX+ANCHOCOMIDA && gatoX+ANCHOGATO>comidaX && gatoY<comidaY+ALTUCOMIDA && gatoY+ALTURAGATO>comidaY){   
+        alert("El gato comió la comida");
+
+    }
+} 
+
 
 function moverIzquierda(){  
     if(gatoX > 0){
@@ -63,6 +71,7 @@ function moverIzquierda(){
     limpiarCanva(); 
     graficarGato();
     graficarComida();   
+    detectarColision() 
     }
 }   
 function moverDerecha(){    
@@ -70,7 +79,8 @@ function moverDerecha(){
     gatoX+=10;
     limpiarCanva(); 
     graficarGato();
-    graficarComida();   
+    graficarComida();       
+    detectarColision()
     }
 }   
 function moverArriba(){     
@@ -79,6 +89,7 @@ function moverArriba(){
     limpiarCanva(); 
     graficarGato();
     graficarComida();   
+    detectarColision()   
     }
 }   
 function moverAbajo(){      
@@ -86,14 +97,13 @@ function moverAbajo(){
     gatoY+=10;
     limpiarCanva(); 
     graficarGato();
-    graficarComida();   
+    graficarComida();       
+    detectarColision()
     }
 }   
-
 
 document.getElementById("btnArriba").onclick = () => moverArriba();       
 document.getElementById("btnAbajo").onclick = () => moverAbajo(); 
 document.getElementById("btnIzquierda").onclick = () => moverIzquierda(); 
 document.getElementById("btnDerecha").onclick = () => moverDerecha();
-
 
