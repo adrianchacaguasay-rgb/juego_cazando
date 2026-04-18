@@ -44,8 +44,8 @@ function graficarComida(){
 //Funcion iniciar juego 
 function iniciarJuego(){    
     clearInterval(intervaloTiempo);
-    gatoX = (canvas.width / 2) - (ANCHOGATO / 2);   
-    gatoY = (canvas.height / 2) - (ALTURAGATO / 2); 
+    gatoX = 0;   
+    gatoY = (canvas.height+ALTURAGATO); 
 
       //COMIDA ESQUINA INFERIOR DERECHA
     comidaX = canvas.width - ANCHOCOMIDA;
