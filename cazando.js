@@ -1,6 +1,7 @@
 let canvas=document.getElementById("juego");
 let ctx=canvas.getContext("2d");
 const VELOCIDAD=15;
+let juegoActivo= true;
 
 
 //Gato
@@ -19,7 +20,7 @@ const ALTUCOMIDA=30;
 //puntaje
 let puntaje=0;  
 //tiempo
-let tiempo=10;
+let tiempo=20;
 let intervaloTiempo;
 
 function graficarRectangulo(x,y,ancho,alto,color){
@@ -78,6 +79,7 @@ function detectarColision(){
 
 
 function moverIzquierda(){  
+    if(!juegoActivo)return;
     if(gatoX > 0){
     gatoX-=10;
     limpiarCanva(); 
@@ -87,6 +89,7 @@ function moverIzquierda(){
     }
 }   
 function moverDerecha(){    
+    if(!juegoActivo)return;   
     if(gatoX<LIMITE_X){   
     gatoX+=10;
     limpiarCanva(); 
@@ -96,6 +99,7 @@ function moverDerecha(){
     }
 }   
 function moverArriba(){     
+    if(!juegoActivo)return;
     if(gatoY>0){
     gatoY-=10;
     limpiarCanva(); 
@@ -105,6 +109,7 @@ function moverArriba(){
     }
 }   
 function moverAbajo(){      
+    if(!juegoActivo)return;
     if(gatoY<LIMITE_Y){
     gatoY+=10;
     limpiarCanva(); 
@@ -135,24 +140,26 @@ function moverAbajo(){
  function restarTiempo(){
     if(tiempo <= 0){
         clearInterval(intervaloTiempo);
-        return; //Detener tiempo
+        juegoActivo = false;
+
+        setTimeout(() => {
+            reiniciarJuego();
+        }, 1000); // espera 1 segundo
+
+        return;
     }
 
     tiempo--;
     mostrarEnSpan("tiempo", tiempo);
-
-    if(tiempo === 0){
-        clearInterval(intervaloTiempo);
-        alert("Game Over");
-    }
 }
 
 
 function reiniciarJuego(){  
     clearInterval(intervaloTiempo);
+    juegoActivo=true;
     // reiniciar valores
     puntaje=0;
-    tiempo=10;   
+    tiempo=20;   
     //actualizar pantalla
     mostrarEnSpan("puntos","0");
     mostrarEnSpan("tiempo","0");
