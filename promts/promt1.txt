@@ -1,0 +1,3 @@
+<promt1> <Mejora lo visual hazlo más dinámico y gamer, agrega una paleta de colores en relación con un gato buscando su comida, 
+agrega detalles según tu criterio para que el juego atraiga a las personas.>    
+<promt2> <Agrega efectos visuales cuando ganas o pierdes sin tocar el js>

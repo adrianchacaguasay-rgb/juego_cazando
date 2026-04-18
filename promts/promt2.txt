@@ -1,0 +1,4 @@
+<promt1><ahora agrega un fondo te voy a proporcionar una imagen gamer haz que lo demas sea acorde a la imagen >
+<promt2> <Color,Código Hex,Descripción Naranja Vibrante,#FF5722,El tono principal de los mandos y las estrellas. Cian Eléctrico,#00ACC1,El color de contraste utilizado en detalles y salpicaduras. Gris Oscuro / Negro,#212121,El tono de las sombras y las líneas de contorno tipo grafiti. Gris Claro,#E0E0E0,
+El tono de fondo de la pared de ladrillos y reflejos. la imagen posee esto y un tema tipo grafiti>
+<promt3> <ubica la imagen de fondo> 
