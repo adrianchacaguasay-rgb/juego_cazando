@@ -4,8 +4,18 @@ const VELOCIDAD = 15;
 let juegoActivo = true;
 let imagenGato = new Image();
 imagenGato.src = "gato.png";
-imagenGato.onload = function(){
-    iniciarJuego();
+let imagenComida = new Image();
+imagenComida.src = "comida.png";
+imagenGato.onload = verificarCarga;
+imagenComida.onload = verificarCarga;
+
+let imagenesCargadas = 0;
+
+function verificarCarga(){
+    imagenesCargadas++;
+    if(imagenesCargadas === 2){
+        iniciarJuego();
+    }
 }
 
 //Gato
@@ -32,34 +42,33 @@ function graficarRectangulo(x, y, ancho, alto, color) {
     ctx.fillRect(x, y, ancho, alto);
 }
 
-function graficarGato(){    
+function graficarGato() {
     ctx.drawImage(imagenGato, gatoX, gatoY, ANCHOGATO, ALTURAGATO);
 }
 
 function graficarComida() {
-    graficarRectangulo(comidaX, comidaY, ANCHOCOMIDA, ALTUCOMIDA, "#820D7A");
-
-
+    if (imagenComida.complete) {
+        ctx.drawImage(imagenComida, comidaX, comidaY, ANCHOCOMIDA, ALTUCOMIDA);
+    }
 }
-
 
 
 //Funcion iniciar juego 
 function iniciarJuego() {
 
-        clearInterval(intervaloTiempo);
+    clearInterval(intervaloTiempo);
 
-        gatoX = canvas.width - ANCHOGATO;
-        gatoY = (canvas.height - ALTURAGATO);
+    gatoX = canvas.width - ANCHOGATO;
+    gatoY = (canvas.height - ALTURAGATO);
 
-        comidaX = canvas.width - ANCHOCOMIDA;
-        comidaY = canvas.height - ALTUCOMIDA;
+    comidaX = canvas.width - ANCHOCOMIDA;
+    comidaY = canvas.height - ALTUCOMIDA;
 
-        graficarGato();
-        graficarComida();
+    graficarGato();
+    graficarComida();
 
-        intervaloTiempo = setInterval(restarTiempo, 1000);
-    }
+    intervaloTiempo = setInterval(restarTiempo, 1000);
+}
 
 
 function limpiarCanva() {
