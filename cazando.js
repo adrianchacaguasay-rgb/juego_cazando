@@ -73,8 +73,12 @@ function detectarColision(){
         alert("El gato comió la comida");   
         reaparecerComida();
         aumentarPuntaje();
+        //tiempo 15 tocar comida
         tiempo=15;
         mostrarEnSpan("tiempo",tiempo);
+        //tiempo -1s
+        tiempo=tiempo-1;
+        mostrarEnSpan("tiempo",tiempo)
 
     }
 } 
