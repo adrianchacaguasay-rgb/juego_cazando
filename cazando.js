@@ -73,6 +73,8 @@ function detectarColision(){
         alert("El gato comió la comida");   
         reaparecerComida();
         aumentarPuntaje();
+        tiempo=15;
+        mostrarEnSpan("tiempo",tiempo);
 
     }
 } 
@@ -159,7 +161,7 @@ function reiniciarJuego(){
     juegoActivo=true;
     // reiniciar valores
     puntaje=0;
-    tiempo=20;   
+    tiempo=15;   
     //actualizar pantalla
     mostrarEnSpan("puntos","0");
     mostrarEnSpan("tiempo","0");
