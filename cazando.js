@@ -32,7 +32,7 @@ function graficarRectangulo(x, y, ancho, alto, color) {
     ctx.fillRect(x, y, ancho, alto);
 }
 
-function graficarGato() {
+function graficarGato(){    
     ctx.drawImage(imagenGato, gatoX, gatoY, ANCHOGATO, ALTURAGATO);
 }
 
@@ -60,7 +60,6 @@ function iniciarJuego() {
 
         intervaloTiempo = setInterval(restarTiempo, 1000);
     }
-
 
 
 function limpiarCanva() {
