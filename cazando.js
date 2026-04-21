@@ -20,7 +20,7 @@ const ALTUCOMIDA=30;
 //puntaje
 let puntaje=0;  
 //tiempo
-let tiempo=20;
+let tiempo=15;
 let intervaloTiempo;
 
 function graficarRectangulo(x,y,ancho,alto,color){
